@@ -7,7 +7,18 @@
 </head>
 <body>
     <h2>PAGINA DE INICIO</h2>
-    <p th:text="${mesaje}"></p>
-    <p th:text="${datos}"></p>
+    <hr>
+    <b>Mensaje:</b> <span th:text="${mesaje}"></span><br>
+    <b>Datos de la propiedad:</b> <span th:text="${datos}"></span><br>
+    <hr>
+    <b>ID del Usuario:</b> <span th:text="${user.id}"></span><br>
+    <b>Nombre:</b> <span th:text="${user.name}"></span><br>
+    <b>Apellido:</b> <span th:text="${user.last_name}"></span><br>
+    <b>Role:</b> <span th:text="${user.role}"></span><br>
+    <b>Email:</b> <span th:text="${user.email}"></span><br>
+    <b>Telefono:</b> <span th:text="${user.phone}"></span><br>
+    <b>Status:</b> <span th:text="${user.status}"></span><br>
+    <b>Fecha de Creacion:</b> <span th:text="${user.created_at}"></span><br>
+   
 </body>
 </html>
