@@ -1,9 +1,19 @@
 package unicartagena.web.unidad3.modelo;
 
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import lombok.Data;
-
+/**
+ * @author Luis Vega
+ */
+@Entity
+@Table(name = "Users")
 @Data
-public class User {
+public class User implements Serializable {
+
+    @Id
     //Propiedades
     private String id;
     private String password;

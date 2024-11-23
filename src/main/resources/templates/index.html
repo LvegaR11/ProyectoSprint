@@ -6,23 +6,10 @@
     <title>TODO supply a title</title>
 </head>
 <body>
-    <h2>PAGINA DE INICIO</h2>
+    <h2>PAGINA DE INICIO</h2>  
+    <h4>LISTA DE USUARIOS</h4>
     <hr>
-    <b>Mensaje:</b> <span th:text="${mesaje}"></span><br>
-    <b>Datos de la propiedad:</b> <span th:text="${datos}"></span><br>
-    <hr>
-    <b>ID del Usuario:</b> <span th:text="${user.id}"></span><br>
-    <b>Nombre:</b> <span th:text="${user.name}"></span><br>
-    <b>Apellido:</b> <span th:text="${user.last_name}"></span><br>
-    <b>Role:</b> <span th:text="${user.role}"></span><br>
-    <b>Email:</b> <span th:text="${user.email}"></span><br>
-    <b>Telefono:</b> <span th:text="${user.phone}"></span><br>
-    <b>Status:</b> <span th:text="${user.status}"></span><br>
-    <b>Fecha de Creacion:</b> <span th:text="${user.created_at}"></span><br>
-    <hr>
-    <h4>Listado de Personas</h4>
-    <hr>
-    <div th:if="${users != null and !users.empty}">
+    <div th:if="${users != null and !users.isEmpty()}">
         <table border="1">
             <tr>
                 <th>ID</th>
@@ -32,7 +19,7 @@
                 <th>Email</th>
                 <th>Telefono</th>
                 <th>Status</th>
-                <th>Fecha de Creacion</th>
+                <th>Fecha de creación</th>
             </tr>
             <tr th:each="user : ${users}">
                 <td th:text="${user.id}"></td>
@@ -45,11 +32,8 @@
                 <td th:text="${user.created_at}"></td>
             </tr>
         </table>
-
     </div>
-    <div th:if="${user == null or users.empty}">
-        La lista esta vacia
-    </div>
-   
+    <div th:if="${users == null or users.isEmpty()}">
+        <h4>NO HAY USUARIOS REGISTRADOS</h4>
 </body>
 </html>
