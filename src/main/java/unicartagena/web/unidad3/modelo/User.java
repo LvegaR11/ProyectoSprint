@@ -1,15 +1,16 @@
 package unicartagena.web.unidad3.modelo;
 
 import java.io.Serializable;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.Data;
 /**
  * @author Luis Vega
  */
 @Entity
-@Table(name = "Users")
+@Table(name = "User")
 @Data
 public class User implements Serializable {
 
