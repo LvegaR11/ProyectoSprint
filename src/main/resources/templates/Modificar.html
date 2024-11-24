@@ -12,39 +12,40 @@
     <hr>
     <form th:action="@{/saveUser}" method="post" th:object="${user}">
         <br/>
-        <label for="id" th:text="#{user.id}"></label>
+        <label for="id" th:text="#{user.id}" required></label>
         <input type="text" name="id" th:field="*{id}" />
         <span th:if="${#fields.hasErrors('id')}" th:errors="*{id}">La cedula es obligatoria</span>
         <br/>
-        <label for="name" th:text="#{user.nombre}"></label>
+        <label for="name" th:text="#{user.nombre}" required></label>
         <input type="text" name="name" th:field="*{name}" />
         <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}">El nombre es obligatorio</span>
         <br/>
-        <label for="last_name" th:text="#{user.apellido}"></label>
+        <label for="last_name" th:text="#{user.apellido}" required></label>
         <input type="text" name="last_name" th:field="*{last_name}" />
         <span th:if="${#fields.hasErrors('last_name')}" th:errors="*{last_name}">El apellido es obligatorio</span>
         <br/>
-        <label for="role" th:text="#{user.rol}"></label>
+        <label for="role" th:text="#{user.rol}" required></label>
         <input type="text" name="role" th:field="*{role}" />
         <span th:if="${#fields.hasErrors('role')}" th:errors="*{role}">El rol es obligatorio</span>
         <br/>
-        <label for="email" th:text="#{user.email}"></label>
+        <label for="email" th:text="#{user.email}" required></label>
         <input type="text" name="email" th:field="*{email}" />
         <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}">El email es obligatorio</span>
         <br/>
-        <label for="phone" th:text="#{user.telefono}"></label>
+        <label for="phone" th:text="#{user.telefono}" required></label>
         <input type="text" name="phone" th:field="*{phone}" />
         <span th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">El telefono es obligatorio</span>
         <br/>
-        <label for="status" th:text="#{user.estado}"></label>
+        <label for="status" th:text="#{user.estado}" required></label>
         <input type="text" name="status" th:field="*{status}" />
         <span th:if="${#fields.hasErrors('status')}" th:errors="*{status}">El status es obligatorio</span>
         <br/>
-        <label for="created_at" th:text="#{user.fechaCreacion}"></label>
+        <label for="created_at" th:text="#{user.fechaCreacion}" required></label>
         <input type="text" name="created_at" th:field="*{created_at}" />
         <br/>
         <input type="reset" th:value="#{accion.limpiar}" /> &nbsp;&nbsp;&nbsp;
         <input type="submit" name="saveUser" th:value="#{accion.guardar}" />
+        <input type="button" name="verVisitas" th:value="#{accion.ver-visitas}" th:onclick="location.href='/'|" />
 
     </form>
     
