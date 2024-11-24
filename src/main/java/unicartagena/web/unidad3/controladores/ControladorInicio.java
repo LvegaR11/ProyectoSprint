@@ -2,9 +2,12 @@ package unicartagena.web.unidad3.controladores;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -34,7 +37,10 @@ public class ControladorInicio {
     }
 
     @PostMapping("/saveUser")
-    public String saveUser(User user) {
+    public String saveUser(@Valid User user, Errors errores) {
+        if(errores.hasErrors()) {
+            return "modificar";
+        }
         userServicio.saveUser(user);
         return "redirect:/";
     }

@@ -6,6 +6,7 @@
     <title>EJEMPLO DE CRUD MVC CON SPRINT BOOT</title>
 </head>
 <body>
+    <header th:replace="plantillas/Partes :: cabecero"></header>
     <h2>PAGINA DE INICIO</h2>  
     <a th:href="@{/addUser}">CREAR NUEVO USUARIO</a>
     <h4>LISTA DE USUARIOS</h4>
@@ -39,5 +40,7 @@
     </div>
     <div th:if="${users == null or users.isEmpty()}">
         <h4>NO HAY USUARIOS REGISTRADOS</h4>
+    </div><hr><br>
+    <footer th:replace="plantillas/Partes :: pie"></footer>
 </body>
 </html>
