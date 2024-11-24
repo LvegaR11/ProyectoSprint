@@ -1,7 +1,9 @@
 package unicartagena.web.unidad3.servicio;
 
 import java.util.List;
+
 import unicartagena.web.unidad3.modelo.User;
+
 
 public interface IUserServicio {
 

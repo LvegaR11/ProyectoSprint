@@ -4,9 +4,10 @@ import java.util.List;
 import unicartagena.web.unidad3.dao.IUserCrud;
 import unicartagena.web.unidad3.modelo.User;
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+@Service
 public class UserServicioImp implements IUserServicio {
 
     @Autowired

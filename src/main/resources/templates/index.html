@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TODO supply a title</title>
+    <title>EJEMPLO DE CRUD MVC CON SPRINT BOOT</title>
 </head>
 <body>
     <h2>PAGINA DE INICIO</h2>  
+    <a th:href="@{/addUser}">CREAR NUEVO USUARIO</a>
     <h4>LISTA DE USUARIOS</h4>
     <hr>
     <div th:if="${users != null and !users.isEmpty()}">
@@ -20,6 +21,7 @@
                 <th>Telefono</th>
                 <th>Status</th>
                 <th>Fecha de creación</th>
+                <th>EDITAR</th>
             </tr>
             <tr th:each="user : ${users}">
                 <td th:text="${user.id}"></td>
@@ -30,6 +32,8 @@
                 <td th:text="${user.phone}"></td>
                 <td th:text="${user.status}"></td>
                 <td th:text="${user.created_at}"></td>
+                <td><a th:href="@{/editUser/}+${user.id}" th:text="EDITAR"></a></td>
+                <td><a th:href="@{/deleteUser/}+${user.id}" th:text="ELIMINAR"></a></td>
             </tr>
         </table>
     </div>

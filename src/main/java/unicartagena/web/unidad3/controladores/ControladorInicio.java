@@ -1,11 +1,14 @@
 package unicartagena.web.unidad3.controladores;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.stereotype.Controller;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.ui.Model;
-import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import lombok.extern.slf4j.Slf4j;
 import unicartagena.web.unidad3.modelo.User;
 import unicartagena.web.unidad3.servicio.IUserServicio;
 
@@ -24,4 +27,29 @@ public class ControladorInicio {
         return "index";
     }
 
+    @GetMapping("/addUser")
+    public String addUser(User user) {
+        return "modificar";
+
+    }
+
+    @PostMapping("/saveUser")
+    public String saveUser(User user) {
+        userServicio.saveUser(user);
+        return "redirect:/";
+    }
+
+    @GetMapping("/editUser/{id}")
+    public String edirUser(User user, Model modelo) {
+         log.info("Mostrando el controlador MVC");
+        user = userServicio.searchUser(user);
+        modelo.addAttribute("user", user);
+        return "modificar";
+    }
+
+    @GetMapping("/deleteUser/{id}")
+    public String deleteUser(User user) {
+        userServicio.deleteUser(user);
+        return "redirect:/";
+    }
 }
