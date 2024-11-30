@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datos de las visitas</title>
+</head>
+<body>
+    <h1>[[#{visit.formulario}]]</h1>
+    <br>
+    from th:action="@{/saveVisit}" method="post" th:object="${visit}">
+        <br/>
+        <label for="id" th:text="#{visit.id}" required></label>
+        <input type="text" name="id" th:field="*{id}" required="required" />
+        <span th:if="${#fields.hasErrors('id')}" th:errors="*{id}">La cedula es obligatoria</span>
+        <br/>
+        <label for="location" th:text="#{visit.location}" required></label>
+        <input type="text" name="location" th:field="*{location}" required="required" />
+        <span th:if="${#fields.hasErrors('location')}" th:errors="*{location}">El nombre es obligatorio</span>
+        <br/>
+        <label for="duration" th:text="#{visit.duration}" required></label>
+        <input type="text" name="duration" th:field="*{duration}" required="required" />
+        <span th:if="${#fields.hasErrors('duration')}" th:errors="*{duration}">El apellido es obligatorio</span>
+        <br/>
+        <label for="number_of_persons" th:text="#{visit.number_of_persons}" required></label>
+        <input type="text" name="number_of_persons" th:field="*{number_of_persons}" required="required" />
+        <span th:if="${#fields.hasErrors('number_of_persons')}" th:errors="*{number_of_persons}">El rol es obligatorio</span>
+        <br/>
+        <label for="visit_date" th:text="#{visit.visit_date}" required></label>
+        <input type="text" name="visit_date" th:field="*{visit_date}" />
+        <br/>
+        <input type="reset" th:value="#{accion.limpiar}" /> &nbsp;&nbsp;&nbsp;
+        <input type="submit" name="saveVisit" th:value="#{accion.guardar}" />
+        <br/>
+
+    </form>
+    
+</body>
+</html>

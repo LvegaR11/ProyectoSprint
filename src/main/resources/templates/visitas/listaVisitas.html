@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datos de visitas</title>
+</head>
+
+<body>
+    <header>"plantillas/partes :: cabecero-visitas"</header>
+    <a href="@{/visitas/addVisit/} + ${user.id}">[[#{visit.crear}]]</a><br>
+    <hr>
+    <div th:if="${visit != null and !visit.isEmpty()}">
+        <tr>
+            <th>[[#{visit.id}]]</th>
+            <th>[[#{visit.location}]]</th>
+            <th>[[#{visit.duration}]]</th>
+            <th>[[#{visit.number_of_persons}]]</th>
+            <th>[[#{visit.visit_date}]]</th>
+            <th>[[#{visit.lista-vacia}]]</th>
+            <th>[[#{accion.editar}]]</th>
+            <th>[[#{accion.eliminar}]]</th>
+        </tr>
+        <tr th:each="visit : ${visits}">
+            <td th:text="${visit.id}"></td>
+            <td th:text="${visit.location}"></td>
+            <td th:text="${visit.duration}"></td>
+            <td th:text="${visit.number_of_persons}"></td>
+            <td th:text="${visit.visit_date}"></td>
+            <td th:text="${visit.lista-vacia}"></td>
+            <td><a href="@{/visitas/editar/} + ${visita.id}">[[#{accion.editar}]]</a></td>
+            <td><a href="@{/visitas/eliminar/} + ${visita.id}">[[#{accion.eliminar}]]</a></td>
+        </tr>
+    </div>
+    <table>
+        <div th:if="${visit == null or visit.isEmpty()}">
+            <h2>[[#{visit.lista-vacia}]]</h2>
+        </div>
+        <br>
+        <hr>
+
+</body>
+
+</html>

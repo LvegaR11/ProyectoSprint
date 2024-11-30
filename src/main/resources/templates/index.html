@@ -34,6 +34,7 @@
                 <td th:text="${user.status}"></td>
                 <td th:text="${user.created_at}"></td>
                 <td><a th:href="@{/editUser/}+${user.id}" th:text="EDITAR"></a></td>
+                <td><a href="@{/visitas/} + ${user.id}}" th:text="#{accion.ver-visitas}"></a></td>
                 <td><a th:href="@{/deleteUser/}+${user.id}" th:text="ELIMINAR"></a></td>
             </tr>
         </table>
