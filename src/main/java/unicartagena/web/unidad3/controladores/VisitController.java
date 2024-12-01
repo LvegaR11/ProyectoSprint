@@ -21,20 +21,23 @@ import unicartagena.web.unidad3.servicio.IVisitServicio;
 public class VisitController {
 
     @Autowired
-    IVisitServicio visitServicio;
+    private IVisitServicio visitServicio;
     @Autowired
-    IUserServicio userService;
+    private IUserServicio userService;
 
     @GetMapping("/visitas/{id}")
     public String listarVisitas(User user, Model modelo) {
         log.info("En el controlador de visitas");
         List<Visit> lista = (List<Visit>) visitServicio.listVisitByUserId(user);
         modelo.addAttribute("visitas", lista);
-        return "visitas/lista";
+        return "visitas/listaVisitas";
     }
 
     @GetMapping("/visitas/agregar/{id}")
-    public String addVisit(Visit visit) {
+    public String addVisit(User user, Visit visit) {
+        log.info("Mostrando el controlador MVC");
+        visit.setId(1);
+        visit.setUser(user);
         return "visitas/modificar";
 
     }
@@ -42,15 +45,17 @@ public class VisitController {
     @GetMapping("/visitas/editar/{id}")
     public String editVisit(Visit visit, Model modelo) {
         log.info("Mostrando el controlador MVC");
-        visit = visitServicio.searchVisit(visit);
-        modelo.addAttribute("visit", visit);
+        Visit visitSearch = visitServicio.searchVisit(visit);
+        modelo.addAttribute("visit", visitSearch);
         return "visitas/modificar";
     }
 
     @GetMapping("/visitas/eliminar/{id}")
     public String deleteVisit(Visit visit) {
+        log.info("Invocando el metodo deleteVisit");
         visitServicio.deleteVisit(visit);
-        return "redirect:/visitas/" + visit.getUser().getId();
+        final String userId = visit.getUser().getId();
+        return "redirect:/visitas/" + userId;
     }
 
     @GetMapping("/visitas/guardar/")
@@ -62,6 +67,7 @@ public class VisitController {
         User user = userService.searchUser(visit.getUser());
         visit.setUser(user);
         visitServicio.saveVisit(visit);
+
         return "redirect:/visitas/" + user.getId();
     }
 

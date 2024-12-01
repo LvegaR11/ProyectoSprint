@@ -8,6 +8,6 @@ import unicartagena.web.unidad3.modelo.Visit;
 
 public interface IVisitCrud extends CrudRepository<Visit, Integer> {
 
-    @Query("select v from Visit v where v.user.id = :userId")
-    public Iterable<Visit> findAllByUserId(@Param("userId") String Id);
+    @Query("SELECT v FROM Visit v WHERE v.user.id = ?1")
+    public Iterable<Visit> findAllByUserId(@Param("id") String id);
 }

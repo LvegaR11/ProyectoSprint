@@ -37,7 +37,7 @@ public class VisitServicioImp implements IVisitServicio {
     @Transactional(readOnly = true)
     @Override
     public Visit searchVisit(Visit visit) {
-        return crudVisit.findById(visit.getId()).orElse(visit);
+        return crudVisit.findById(visit.getId()).orElse(null);
     }
 
 }

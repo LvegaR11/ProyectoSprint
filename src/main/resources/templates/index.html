@@ -14,15 +14,17 @@
     <div th:if="${users != null and !users.isEmpty()}">
         <table border="1">
             <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Role</th>
-                <th>Email</th>
-                <th>Telefono</th>
-                <th>Status</th>
-                <th>Fecha de creación</th>
-                <th>EDITAR</th>
+                <th>id</th>
+                <th>nombre</th>
+                <th>apellido</th>
+                <th>rol</th>
+                <th>email</th>
+                <th>telefono</th>
+                <th>estado</th>
+                <th>fecha de creación</th>
+                <th>editar</th>
+                <th>ver visitas</th>
+                <th>eliminar</th>
             </tr>
             <tr th:each="user : ${users}">
                 <td th:text="${user.id}"></td>
@@ -34,7 +36,7 @@
                 <td th:text="${user.status}"></td>
                 <td th:text="${user.created_at}"></td>
                 <td><a th:href="@{/editUser/}+${user.id}" th:text="EDITAR"></a></td>
-                <td><a href="@{/visitas/} + ${user.id}}" th:text="#{accion.ver-visitas}"></a></td>
+                <td><a th:href="@{/visitas/}+${user.id}" th:text="#{accion.ver-visitas}"></a></td>
                 <td><a th:href="@{/deleteUser/}+${user.id}" th:text="ELIMINAR"></a></td>
             </tr>
         </table>

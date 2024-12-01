@@ -19,14 +19,14 @@ import lombok.Data;
  * @author Luis Vega
  */
 @Entity
-@Table(name = "Visit", catalog = "crudjsp")
+@Table(name = "visit")
 @Data
 public class Visit implements Serializable {
     // Propiedades
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @Column(name = "id", nullable = false, length = 15)
+    @Column(name = "id", nullable = false, length = 10)
     private int id;
     @NotEmpty
     private String location;

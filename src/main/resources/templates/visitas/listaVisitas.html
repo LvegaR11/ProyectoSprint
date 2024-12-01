@@ -8,37 +8,38 @@
 </head>
 
 <body>
-    <header>"plantillas/partes :: cabecero-visitas"</header>
-    <a href="@{/visitas/addVisit/} + ${user.id}">[[#{visit.crear}]]</a><br>
+    <header th:replace="plantillas/Partes :: cabecero-visitas"></header>
+    
+    <a th:href="@{/visitas/agregar/{id}(id=${user.id})}">[[#{visita.crear}]]</a>
+
     <hr>
-    <div th:if="${visit != null and !visit.isEmpty()}">
-        <tr>
-            <th>[[#{visit.id}]]</th>
-            <th>[[#{visit.location}]]</th>
-            <th>[[#{visit.duration}]]</th>
-            <th>[[#{visit.number_of_persons}]]</th>
-            <th>[[#{visit.visit_date}]]</th>
-            <th>[[#{visit.lista-vacia}]]</th>
-            <th>[[#{accion.editar}]]</th>
-            <th>[[#{accion.eliminar}]]</th>
-        </tr>
-        <tr th:each="visit : ${visits}">
-            <td th:text="${visit.id}"></td>
-            <td th:text="${visit.location}"></td>
-            <td th:text="${visit.duration}"></td>
-            <td th:text="${visit.number_of_persons}"></td>
-            <td th:text="${visit.visit_date}"></td>
-            <td th:text="${visit.lista-vacia}"></td>
-            <td><a href="@{/visitas/editar/} + ${visita.id}">[[#{accion.editar}]]</a></td>
-            <td><a href="@{/visitas/eliminar/} + ${visita.id}">[[#{accion.eliminar}]]</a></td>
-        </tr>
+    <div th:if="${visitas != null and !visitas.isEmpty()}">
+        <table border="1">
+            <tr>
+                <th>[[#{visita.id}]]</th>
+                <th>[[#{visita.location}]]</th>
+                <th>[[#{visita.duration}]]</th>
+                <th>[[#{visita.number_of_persons}]]</th>
+                <th>[[#{visita.visit_date}]]</th>
+                <th>[[#{accion.editar}]]</th>
+                <th>[[#{accion.eliminar}]]</th>
+                </tr>
+            <tr th:each="visita : ${visitas}">
+                <td th:text="${visita.id}"></td>
+                <td th:text="${visita.location}"></td>
+                <td th:text="${visita.duration}"></td>
+                <td th:text="${visita.number_of_persons}"></td>
+                <td th:text="${visita.visit_date}"></td>
+                <td><a th:href="@{/visitas/editar/{id}(id=${visita.id})}">[[#{accion.editar}]]</a></td>
+                <td><a th:href="@{/visitas/eliminar/{id}(id=${visita.id})}">[[#{accion.eliminar}]]</a></td>
+            </tr>
+        </table>
     </div>
-    <table>
-        <div th:if="${visit == null or visit.isEmpty()}">
-            <h2>[[#{visit.lista-vacia}]]</h2>
-        </div>
-        <br>
-        <hr>
+    <div th:if="${visitas == null or visitas.isEmpty()}">
+        <h2>[[#{visita.lista-vacia}]]</h2>
+    </div>
+    <br>
+    <hr>
 
 </body>
 
